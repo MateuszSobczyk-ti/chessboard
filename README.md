@@ -56,13 +56,14 @@ This API allows you to simulate battles on a chessboard, including:
       ]
     }
     ```
-    * 400 Bad Request 
+    * 400 Bad Request  
+   _TooManyUnitsException_
    ```json
       {
          "statusCode": 400,
          "message": "Too many units for configured chessboard dimension!"
       }
-    ```
+   ```
    ```
       {
          "width": "Width dimension cannot be empty",
