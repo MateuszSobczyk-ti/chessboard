@@ -78,7 +78,7 @@ This API allows you to simulate battles on a chessboard, including:
 ### Unit action
 
 * **POST** `/api/v1/chessboard/unit/action`
-* **Description:** Issue a command (move or shoot) to a unit. Specify the target position. The response contains the action result message and the new position for the moved unit or destroyed unit details.
+* **Description:** Issue a command (move or shot) to a unit. Specify the target position. The response contains the action result message and the new position for the moved unit or destroyed unit details.
 * **Request Body:**
     ```json
     {
@@ -156,7 +156,7 @@ This API allows you to simulate battles on a chessboard, including:
 ### Random Unit Command
 
 * **POST** `/api/v1/chessboard/unit/{unitId}/random-command`
-* **Description:** Issue a random command to a specified unit. The unit can shoot or move. The response contains the action result message and the new position for the moved unit or destroyed unit details.
+* **Description:** Issue a random command to a specified unit. The unit can shot or move. The response contains the action result message and the new position for the moved unit or destroyed unit details.
 * **Parameters:**
     * `unitId` (path, integer, required)
     * `gameId` (query, integer, required)
