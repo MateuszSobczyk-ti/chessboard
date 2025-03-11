@@ -2,8 +2,6 @@
 
 API for simulating chessboard fights.
 
-<img src="https://github.com/user-attachments/assets/6fd42385-5ee0-4e42-9a02-b3d5699c3de4" width="250" height="230" alt="chessboard">
-
 ## Description
 
 This API allows you to simulate battles on a chessboard, including:
