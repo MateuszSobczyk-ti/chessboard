@@ -18,8 +18,8 @@ public class ActionTimeIntervalValidator {
     }
 
     private static void validateArcherTimeInterval(Command lastCommand, long timeInterval) {
-        if (ActionRequest.ActionType.SHOT.equals(lastCommand.getActionType())
-                && UnitType.ARCHER.equals(lastCommand.getUnit().getUnitType()) && UnitType.ARCHER.getTimeAfterShot() > timeInterval) {
+        if (ActionRequest.ActionType.SHOOT.equals(lastCommand.getActionType())
+                && UnitType.ARCHER.equals(lastCommand.getUnit().getUnitType()) && UnitType.ARCHER.getTimeAfterShoot() > timeInterval) {
             throw new ActionTimeIntervalException(lastCommand.getUnit().getUnitType(), lastCommand.getActionType());
         }
         if (ActionRequest.ActionType.MOVE.equals(lastCommand.getActionType())
@@ -36,8 +36,8 @@ public class ActionTimeIntervalValidator {
     }
 
     private static void validateCannonTimeInterval(Command lastCommand, long timeInterval) {
-        if (ActionRequest.ActionType.SHOT.equals(lastCommand.getActionType())
-                && UnitType.CANNON.equals(lastCommand.getUnit().getUnitType()) && UnitType.CANNON.getTimeAfterShot() > timeInterval) {
+        if (ActionRequest.ActionType.SHOOT.equals(lastCommand.getActionType())
+                && UnitType.CANNON.equals(lastCommand.getUnit().getUnitType()) && UnitType.CANNON.getTimeAfterShoot() > timeInterval) {
             throw new ActionTimeIntervalException(lastCommand.getUnit().getUnitType(), lastCommand.getActionType());
         }
     }

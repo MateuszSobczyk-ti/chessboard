@@ -52,9 +52,9 @@ public class CommandsService {
                 .player(player)
                 .build();
         if (UnitType.CANNON.equals(unit.getUnitType())) {
-            actionRequest.setActionType(ActionRequest.ActionType.SHOT);
+            actionRequest.setActionType(ActionRequest.ActionType.SHOOT);
             actionRequest.setSecondCoordinateDto(new CoordinateDto(getRandomDirection(),
-                    getRandomStep(unit.getUnitType(), ActionRequest.ActionType.SHOT, maxDimension)));
+                    getRandomStep(unit.getUnitType(), ActionRequest.ActionType.SHOOT, maxDimension)));
         } else {
             actionRequest.setActionType((UnitType.ARCHER.equals(unit.getUnitType())) ? getRandomArcherAction() : ActionRequest.ActionType.MOVE);
         }
@@ -84,6 +84,6 @@ public class CommandsService {
     }
 
     private ActionRequest.ActionType getRandomArcherAction() {
-        return new Random().nextBoolean() ? ActionRequest.ActionType.MOVE : ActionRequest.ActionType.SHOT;
+        return new Random().nextBoolean() ? ActionRequest.ActionType.MOVE : ActionRequest.ActionType.SHOOT;
     }
 }

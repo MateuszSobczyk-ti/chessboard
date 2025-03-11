@@ -14,12 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class ActionTimeIntervalValidatorTest {
 
     @Test
-    void archerShotValidTimeShouldNotThrowException() {
+    void archerShootValidTimeShouldNotThrowException() {
         //given
         Command lastCommand = Command.builder()
                 .unit(Unit.builder().unitType(UnitType.ARCHER).build())
-                .actionType(ActionRequest.ActionType.SHOT)
-                .executionDate(LocalDateTime.now().minusSeconds(UnitType.ARCHER.getTimeAfterShot()))
+                .actionType(ActionRequest.ActionType.SHOOT)
+                .executionDate(LocalDateTime.now().minusSeconds(UnitType.ARCHER.getTimeAfterShoot()))
                 .build();
 
         //when && then
@@ -27,12 +27,12 @@ class ActionTimeIntervalValidatorTest {
     }
 
     @Test
-    void archerShotInvalidTimeShouldThrowException() {
+    void archerShootInvalidTimeShouldThrowException() {
         //given
         Command lastCommand = Command.builder()
                 .unit(Unit.builder().unitType(UnitType.ARCHER).build())
-                .actionType(ActionRequest.ActionType.SHOT)
-                .executionDate(LocalDateTime.now().minusSeconds(UnitType.ARCHER.getTimeAfterShot() - 1))
+                .actionType(ActionRequest.ActionType.SHOOT)
+                .executionDate(LocalDateTime.now().minusSeconds(UnitType.ARCHER.getTimeAfterShoot() - 1))
                 .build();
 
         //when && then
@@ -92,12 +92,12 @@ class ActionTimeIntervalValidatorTest {
     }
 
     @Test
-    void cannonShotValidTimeShouldNotThrowException() {
+    void cannonShootValidTimeShouldNotThrowException() {
         //given
         Command lastCommand = Command.builder()
                 .unit(Unit.builder().unitType(UnitType.CANNON).build())
-                .actionType(ActionRequest.ActionType.SHOT)
-                .executionDate(LocalDateTime.now().minusSeconds(UnitType.CANNON.getTimeAfterShot()))
+                .actionType(ActionRequest.ActionType.SHOOT)
+                .executionDate(LocalDateTime.now().minusSeconds(UnitType.CANNON.getTimeAfterShoot()))
                 .build();
 
         //when && then
@@ -105,12 +105,12 @@ class ActionTimeIntervalValidatorTest {
     }
 
     @Test
-    void cannonShotInvalidTimeShouldThrowException() {
+    void cannonShootInvalidTimeShouldThrowException() {
         //given
         Command lastCommand = Command.builder()
                 .unit(Unit.builder().unitType(UnitType.CANNON).build())
-                .actionType(ActionRequest.ActionType.SHOT)
-                .executionDate(LocalDateTime.now().minusSeconds(UnitType.CANNON.getTimeAfterShot() - 1))
+                .actionType(ActionRequest.ActionType.SHOOT)
+                .executionDate(LocalDateTime.now().minusSeconds(UnitType.CANNON.getTimeAfterShoot() - 1))
                 .build();
 
         //when && then
@@ -123,7 +123,7 @@ class ActionTimeIntervalValidatorTest {
         Command lastCommand = Command.builder()
                 .unit(Unit.builder().unitType(UnitType.ARCHER).build())
                 .actionType(ActionRequest.ActionType.MOVE)
-                .executionDate(LocalDateTime.now().minusSeconds(UnitType.ARCHER.getTimeAfterShot() - 1))
+                .executionDate(LocalDateTime.now().minusSeconds(UnitType.ARCHER.getTimeAfterShoot() - 1))
                 .build();
 
         //when && then
@@ -135,8 +135,8 @@ class ActionTimeIntervalValidatorTest {
         //given
         Command lastCommand = Command.builder()
                 .unit(Unit.builder().unitType(UnitType.TRANSPORT).build())
-                .actionType(ActionRequest.ActionType.SHOT)
-                .executionDate(LocalDateTime.now().minusSeconds(UnitType.ARCHER.getTimeAfterShot() - 1))
+                .actionType(ActionRequest.ActionType.SHOOT)
+                .executionDate(LocalDateTime.now().minusSeconds(UnitType.ARCHER.getTimeAfterShoot() - 1))
                 .build();
 
         //when && then

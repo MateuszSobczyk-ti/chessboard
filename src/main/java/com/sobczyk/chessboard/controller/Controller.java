@@ -52,7 +52,7 @@ public class Controller {
 
     @Operation(
             summary = "Command for unit",
-            description = "Make a command(move or shot) for unit. Specify target position." +
+            description = "Make a command(move or shoot) for unit. Specify target position." +
                     " In response you get result message of action and new position for moved unit or destroyed unit details.")
     @PostMapping(value = "/unit/action", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ActionResponse> actionUnit(@Valid @RequestBody ActionRequest request) {
@@ -62,7 +62,7 @@ public class Controller {
 
     @Operation(
             summary = "Random command for unit",
-            description = "Make a random command for specified unit. Unit can shot or move." +
+            description = "Make a random command for specified unit. Unit can shoot or move." +
                     " In response you get result message of action and new position for moved unit or destroyed unit details.")
     @PostMapping(value = "/unit/{unitId}/random-command", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ActionResponse> randomAction(@PathVariable Long unitId, @NotNull @RequestParam Long gameId,

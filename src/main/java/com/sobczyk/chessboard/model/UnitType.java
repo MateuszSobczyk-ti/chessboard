@@ -8,11 +8,11 @@ public enum UnitType {
     TRANSPORT(null, 7),
     CANNON(13, null);
 
-    private final Integer timeAfterShot;
+    private final Integer timeAfterShoot;
     private final Integer timeAfterMove;
 
-    UnitType(Integer timeAfterShot, Integer timeAfterMove) {
-        this.timeAfterShot = timeAfterShot;
+    UnitType(Integer timeAfterShoot, Integer timeAfterMove) {
+        this.timeAfterShoot = timeAfterShoot;
         this.timeAfterMove = timeAfterMove;
     }
 }

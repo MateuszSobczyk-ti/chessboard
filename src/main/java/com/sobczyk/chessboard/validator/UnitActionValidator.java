@@ -40,7 +40,7 @@ public class UnitActionValidator {
     private static void validateTransportAction(ActionRequest request, Unit unit) {
         validateDiagonallyAction(request, unit);
         validateMoveScope(request, ALLOWED_SCOPE_TRANSPORT, unit);
-        validateActionType(request, ActionRequest.ActionType.SHOT, unit);
+        validateActionType(request, ActionRequest.ActionType.SHOOT, unit);
     }
 
     private static void validateCannonAction(ActionRequest request, Unit unit) {

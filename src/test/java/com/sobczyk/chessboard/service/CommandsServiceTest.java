@@ -71,6 +71,9 @@ class CommandsServiceTest {
 
     @Test
     void shouldSaveCommand() {
+        //given
+        when(unitRepository.findByIdAndDestroyedFalse(1L)).thenReturn(Optional.of(unit));
+
         //when
         commandsService.saveCommand(actionRequest);
 
@@ -96,11 +99,11 @@ class CommandsServiceTest {
     }
 
     @Test
-    void shouldCreateRandomCommandCannonShot() {
+    void shouldCreateRandomCommandCannonShoot() {
         //given
         Unit cannonUnit = unit.toBuilder().unitType(UnitType.CANNON).build();
         when(unitRepository.findByIdAndDestroyedFalse(1L)).thenReturn(Optional.of(cannonUnit));
-        when(unitsService.unitAction(any(ActionRequest.class))).thenReturn(ResponseEntity.ok(new ActionResponse("Unit shot", null)));
+        when(unitsService.unitAction(any(ActionRequest.class))).thenReturn(ResponseEntity.ok(new ActionResponse("Unit shoot", null)));
 
         //when
         ResponseEntity<ActionResponse> response = commandsService.createRandomCommand(1L, 1L, Unit.Player.WHITE);
@@ -108,7 +111,7 @@ class CommandsServiceTest {
         //then
         assertNotNull(response);
         assertEquals(200, response.getStatusCodeValue());
-        assertEquals("Unit shot", response.getBody().message());
+        assertEquals("Unit shoot", response.getBody().message());
         verify(commandRepository, times(1)).save(any(Command.class));
     }
 

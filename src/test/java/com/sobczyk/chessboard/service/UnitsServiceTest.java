@@ -89,7 +89,7 @@ class UnitsServiceTest {
 
     @Test
     void shouldDestroyUnit() {
-        actionRequest = new ActionRequest(1L, 1L, Unit.Player.BLACK, ActionRequest.ActionType.SHOT,
+        actionRequest = new ActionRequest(1L, 1L, Unit.Player.BLACK, ActionRequest.ActionType.SHOOT,
                 new CoordinateDto(CoordinateDto.Direction.DOWN, 1), null);
         Unit targetUnit = Unit.builder()
                 .id(2L)
@@ -120,7 +120,7 @@ class UnitsServiceTest {
 
     @Test
     void shouldMiss() {
-        actionRequest = new ActionRequest(1L, 1L, Unit.Player.BLACK, ActionRequest.ActionType.SHOT,
+        actionRequest = new ActionRequest(1L, 1L, Unit.Player.BLACK, ActionRequest.ActionType.SHOOT,
                 new CoordinateDto(CoordinateDto.Direction.DOWN, 1), null);
         try (MockedStatic<PositionsGenerator> mockedStatic = Mockito.mockStatic(PositionsGenerator.class)) {
             mockedStatic.when(() -> PositionsGenerator.calculatePosition(anyInt(), anyInt(), any(CoordinateDto.class), nullable(CoordinateDto.class)))
@@ -134,7 +134,7 @@ class UnitsServiceTest {
             assertNotNull(response);
             assertEquals(200, response.getStatusCodeValue());
             assertNotNull(response.getBody());
-            assertEquals("Shot missed!", response.getBody().message());
+            assertEquals("Shoot missed!", response.getBody().message());
         }
     }
 

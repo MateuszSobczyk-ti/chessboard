@@ -35,13 +35,13 @@ public class UnitsService {
                 request.getFirstCoordinateDto(), request.getSecondCoordinateDto());
         Optional<Unit> unitInDanger = unitRepository.findByGameIdAndWidthPositionAndHeightPositionAndDestroyedFalse(
                 request.getGameId(), newPositions[0], newPositions[1]);
-        if (unitInDanger.isPresent() && ActionRequest.ActionType.SHOT.equals(request.getActionType())) {
+        if (unitInDanger.isPresent() && ActionRequest.ActionType.SHOOT.equals(request.getActionType())) {
             return destroyUnit(unitInDanger);
         }
         if (ActionRequest.ActionType.MOVE.equals(request.getActionType())) {
             return moveUnit(unit, unitInDanger, newPositions);
         }
-        return ResponseEntity.ok(new ActionResponse("Shot missed!", null));
+        return ResponseEntity.ok(new ActionResponse("Shoot missed!", null));
     }
 
     private ResponseEntity<ActionResponse> moveUnit(Unit unit, Optional<Unit> unitInDanger, int[] newPositions) {

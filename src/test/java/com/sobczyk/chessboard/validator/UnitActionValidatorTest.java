@@ -76,7 +76,7 @@ class UnitActionValidatorTest {
     void transportShouldThrowActionTypeException() {
         //given
         ActionRequest request = ActionRequest.builder()
-                .actionType(ActionRequest.ActionType.SHOT)
+                .actionType(ActionRequest.ActionType.SHOOT)
                 .build();
 
         //when && then

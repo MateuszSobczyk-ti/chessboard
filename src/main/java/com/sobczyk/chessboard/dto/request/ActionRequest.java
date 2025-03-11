@@ -23,6 +23,6 @@ public class ActionRequest {
     private CoordinateDto secondCoordinateDto;
 
     public enum ActionType {
-        MOVE, SHOT
+        MOVE, SHOOT
     }
 }
