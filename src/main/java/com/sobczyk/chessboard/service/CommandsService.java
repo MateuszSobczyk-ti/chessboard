@@ -3,6 +3,7 @@ package com.sobczyk.chessboard.service;
 import com.sobczyk.chessboard.dto.request.ActionRequest;
 import com.sobczyk.chessboard.dto.request.CoordinateDto;
 import com.sobczyk.chessboard.dto.response.ActionResponse;
+import com.sobczyk.chessboard.exception.UnitNotFoundException;
 import com.sobczyk.chessboard.mapper.CommandMapper;
 import com.sobczyk.chessboard.model.Command;
 import com.sobczyk.chessboard.model.Unit;
@@ -28,6 +29,8 @@ public class CommandsService {
     public void saveCommand(ActionRequest request) {
         Optional<Command> lastCommand = commandRepository.findTopByPlayerAndGameIdOrderByExecutionDateDesc(
                 request.getPlayer(), request.getGameId());
+        unitRepository.findByIdAndDestroyedFalse(request.getUnitId())
+                .orElseThrow(() -> new UnitNotFoundException(request.getUnitId()));
         Command command = CommandMapper.INSTANCE.toCommand(request);
         commandRepository.save(command);
         lastCommand.ifPresent(ActionTimeIntervalValidator::validateActionTimeInterval);

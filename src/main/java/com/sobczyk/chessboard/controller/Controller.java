@@ -35,7 +35,7 @@ public class Controller {
             description = "Set game configuration: chessboard dimension and units for every player. If you set oldGameId - this game will be archived." +
                     " In response you get new game id, game start date and units positions on chessboard.")
     @PostMapping(value = "/newGame", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<GameResponse> startNewGame(@RequestParam Long oldGameId,
+    public ResponseEntity<GameResponse> startNewGame(@RequestParam(required = false) Long oldGameId,
                                                      @Valid @RequestBody ConfigurationRequest request) {
         return configurationService.saveConfiguration(request, oldGameId);
     }

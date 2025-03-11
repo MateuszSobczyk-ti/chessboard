@@ -3,6 +3,7 @@ package com.sobczyk.chessboard.service;
 import com.sobczyk.chessboard.dto.request.ActionRequest;
 import com.sobczyk.chessboard.dto.response.ActionResponse;
 import com.sobczyk.chessboard.dto.response.UnitsResponse;
+import com.sobczyk.chessboard.exception.UnitNotFoundException;
 import com.sobczyk.chessboard.mapper.UnitMapper;
 import com.sobczyk.chessboard.model.Unit;
 import com.sobczyk.chessboard.model.UnitType;
@@ -28,7 +29,7 @@ public class UnitsService {
 
     public synchronized ResponseEntity<ActionResponse> unitAction(ActionRequest request) {
         Unit unit = unitRepository.findByIdAndDestroyedFalse(request.getUnitId())
-                .orElseThrow(() -> new RuntimeException("Unit not found"));
+                .orElseThrow(() -> new UnitNotFoundException(request.getUnitId()));
         UnitActionValidator.validateAction(request, unit);
         int[] newPositions = PositionsGenerator.calculatePosition(unit.getWidthPosition(), unit.getHeightPosition(),
                 request.getFirstCoordinateDto(), request.getSecondCoordinateDto());
