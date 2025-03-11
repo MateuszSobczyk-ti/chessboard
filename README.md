@@ -20,7 +20,7 @@ This API allows you to simulate battles on a chessboard, including:
 * **Parameters:**
     * `oldGameId` (query, integer, optional)
 * **Request Body:**
-    ```json
+   ```json
     {
       "width": 5,
       "height": 5,
@@ -37,6 +37,7 @@ This API allows you to simulate battles on a chessboard, including:
     }
     ```
 * **Response:**
+   * 200 OK
     ```json
     {
       "gameId": 1,
@@ -55,6 +56,23 @@ This API allows you to simulate battles on a chessboard, including:
       ]
     }
     ```
+    * 400 Bad Request 
+   ```json
+      {
+         "statusCode": 400,
+         "message": "Too many units for configured chessboard dimension!"
+      }
+    ```
+   ```
+      {
+         "width": "Width dimension cannot be empty",
+      }
+   ```
+   ```
+      {
+         "height": "dimension value must be greater than 1"
+      }
+   ```
 
 ### Unit action
 
@@ -75,6 +93,7 @@ This API allows you to simulate battles on a chessboard, including:
     }
     ```
 * **Response:**
+   * 200 OK
     ```json
     {
       "message": "Unit moved",
@@ -89,6 +108,49 @@ This API allows you to simulate battles on a chessboard, including:
       }
     }
     ```
+    * 400 Bad Request  
+  _ActionTimeIntervalException_
+   ```json
+   {
+      "statusCode": 400,
+      "message": "ARCHER cannot SHOT yet!"
+   }
+   ```
+   _UnitNotFoundException_
+   ```json
+   {
+      "statusCode": 400,
+      "message": "Unit with id -1 not found!"
+   }
+   ```
+   _ActionTypeException_
+   ```json
+   {
+      "statusCode": 400,
+      "message": "Action SHOT is not allowed for TRANSPORT unit!"
+   }
+   ```
+   _MoveScopeExeception_
+   ```json
+   {
+      "statusCode": 400,
+      "message": "Too big move scope! For TRANSPORT allowed scope is 3"
+   }
+   ```
+   _NewPositionOutOfChessboardException_
+   ```json
+   {
+     "statusCode": 400,
+     "message": "New unit position is out of chessboard dimension!"
+   }
+   ```
+   _DiagonallyMoveException_
+   ```json
+   {
+      "statusCode": 400,
+      "message": "For ARCHER diagonally move is not allowed!"
+   }
+   ```
 
 ### Random Unit Command
 
@@ -157,3 +219,11 @@ This API allows you to simulate battles on a chessboard, including:
     ```
     http://localhost:8080/swagger-ui.html.
     ```
+
+## Technology
+* Java 21
+* Spring Boot 3.2
+* H2 Database
+* Junit, Mockito
+* Swagger
+* Maven
